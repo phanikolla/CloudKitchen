@@ -41,49 +41,91 @@ Spice Story is a full-stack web application that allows users to browse menu ite
 ## Technical Stack
 
 ### Frontend
-- React.js with TypeScript
-- Next.js for server-side rendering and routing
-- Tailwind CSS for styling
-- Redux Toolkit for state management
-- React Query for data fetching
-- Stripe for payment processing
+- **Framework & Language**
+  - Next.js 14.0.3 (React Framework)
+  - TypeScript 5.0+
+  - React 18.2.0
+
+- **State Management & Data Fetching**
+  - React Context API for cart management
+  - Axios for API requests
+
+- **Styling**
+  - Tailwind CSS for utility-first styling
+  - CSS Modules for component-specific styles
+
+- **Payment Processing**
+  - Stripe.js for payment integration
+  - @stripe/react-stripe-js for React components
+
+- **Testing**
+  - Jest for unit testing
+  - React Testing Library for component testing
 
 ### Backend
-- Node.js with Express
-- MongoDB for database
-- JWT for authentication
-- WebSocket for real-time order tracking
-- RESTful API architecture
+- **Runtime & Framework**
+  - Node.js
+  - Express.js
+  - TypeScript
+
+- **Database**
+  - MongoDB with Mongoose ODM
+  - MongoDB Atlas for cloud hosting
+
+- **Authentication & Security**
+  - JWT (JSON Web Tokens) for authentication
+  - bcrypt for password hashing
+  - Express middleware for security
+
+- **API Architecture**
+  - RESTful API design
+  - Express Router for route management
+  - Middleware for request processing
+
+- **Testing**
+  - Jest for unit and integration testing
+  - Supertest for API testing
 
 ### Development Tools
-- Git for version control
-- ESLint and Prettier for code formatting
-- Jest and React Testing Library for testing
-- Docker for containerization
+- **Version Control**
+  - Git for source control
+  - GitHub for repository hosting
 
-## Project Structure
+- **Code Quality**
+  - ESLint for code linting
+  - Prettier for code formatting
+  - TypeScript for type checking
+
+- **Package Management**
+  - npm for package management
+  - package.json for dependency management
+
+- **Environment Management**
+  - dotenv for environment variables
+  - cross-env for cross-platform environment variables
+
+### Project Structure
 
 ```
 spice-story/
 ├── frontend/
 │   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── hooks/
-│   │   ├── store/
-│   │   ├── services/
-│   │   └── utils/
-│   ├── public/
-│   └── tests/
+│   │   ├── components/     # Reusable UI components
+│   │   ├── pages/         # Next.js pages
+│   │   ├── context/       # React Context providers
+│   │   ├── styles/        # Global styles and Tailwind config
+│   │   └── utils/         # Utility functions
+│   ├── public/            # Static assets
+│   └── tests/             # Frontend tests
 ├── backend/
 │   ├── src/
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   └── utils/
-│   └── tests/
-└── docs/
+│   │   ├── controllers/   # Route controllers
+│   │   ├── models/        # Mongoose models
+│   │   ├── routes/        # Express routes
+│   │   ├── middleware/    # Custom middleware
+│   │   └── utils/         # Utility functions
+│   └── tests/             # Backend tests
+└── docs/                  # Documentation
 ```
 
 ## Getting Started
@@ -96,10 +138,37 @@ spice-story/
 
 ### Installation Steps
 1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/spice-story.git
+   cd spice-story
+   ```
+
 2. Install frontend dependencies
+   ```bash
+   cd frontend
+   npm install
+   ```
+
 3. Install backend dependencies
+   ```bash
+   cd ../backend
+   npm install
+   ```
+
 4. Set up environment variables
+   - Create `.env` files in both frontend and backend directories
+   - Add necessary environment variables (see `.env.example` files)
+
 5. Start development servers
+   ```bash
+   # Start backend server
+   cd backend
+   npm run dev
+
+   # Start frontend server
+   cd frontend
+   npm run dev
+   ```
 
 ## Development Guidelines
 

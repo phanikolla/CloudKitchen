@@ -1,19 +1,19 @@
 import express from 'express';
-import { MenuItem } from '../models/MenuItem';
+import { Product } from '../models/Product';
 
 const router = express.Router();
 
-// Get all menu items
+// Get all products
 router.get('/', async (_req, res) => {
   try {
-    const menuItems = await MenuItem.find().sort({ category: 1, name: 1 });
-    return res.json(menuItems);
+    const products = await Product.find().sort({ createdAt: -1 });
+    return res.json(products);
   } catch (error) {
-    return res.status(500).json({ message: 'Error fetching menu items', error });
+    return res.status(500).json({ message: 'Error fetching products', error });
   }
 });
 
-// Create a new menu item
+// Create new product
 router.post('/', async (req, res) => {
   try {
     const { name, description, price, category, image } = req.body;
@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: 'Price must be a positive number' });
     }
 
-    const menuItem = new MenuItem({
+    const product = new Product({
       name,
       description,
       price,
@@ -36,27 +36,27 @@ router.post('/', async (req, res) => {
       image
     });
 
-    await menuItem.save();
-    return res.status(201).json(menuItem);
+    await product.save();
+    return res.status(201).json(product);
   } catch (error) {
-    return res.status(500).json({ message: 'Error creating menu item', error });
+    return res.status(500).json({ message: 'Error creating product', error });
   }
 });
 
-// Get menu item by ID
+// Get product by ID
 router.get('/:id', async (req, res) => {
   try {
-    const menuItem = await MenuItem.findById(req.params.id);
-    if (!menuItem) {
-      return res.status(404).json({ message: 'Menu item not found' });
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
     }
-    return res.json(menuItem);
+    return res.json(product);
   } catch (error) {
-    return res.status(500).json({ message: 'Error fetching menu item', error });
+    return res.status(500).json({ message: 'Error fetching product', error });
   }
 });
 
-// Update menu item
+// Update product
 router.put('/:id', async (req, res) => {
   try {
     const { name, description, price, category, image } = req.body;
@@ -71,32 +71,32 @@ router.put('/:id', async (req, res) => {
       return res.status(400).json({ message: 'Price must be a positive number' });
     }
 
-    const menuItem = await MenuItem.findByIdAndUpdate(
+    const product = await Product.findByIdAndUpdate(
       req.params.id,
       { name, description, price, category, image },
       { new: true, runValidators: true }
     );
 
-    if (!menuItem) {
-      return res.status(404).json({ message: 'Menu item not found' });
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
     }
 
-    return res.json(menuItem);
+    return res.json(product);
   } catch (error) {
-    return res.status(500).json({ message: 'Error updating menu item', error });
+    return res.status(500).json({ message: 'Error updating product', error });
   }
 });
 
-// Delete menu item
+// Delete product
 router.delete('/:id', async (req, res) => {
   try {
-    const menuItem = await MenuItem.findByIdAndDelete(req.params.id);
-    if (!menuItem) {
-      return res.status(404).json({ message: 'Menu item not found' });
+    const product = await Product.findByIdAndDelete(req.params.id);
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
     }
-    return res.json({ message: 'Menu item deleted successfully' });
+    return res.json({ message: 'Product deleted successfully' });
   } catch (error) {
-    return res.status(500).json({ message: 'Error deleting menu item', error });
+    return res.status(500).json({ message: 'Error deleting product', error });
   }
 });
 

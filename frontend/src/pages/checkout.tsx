@@ -71,40 +71,20 @@ export default function Checkout() {
       <h1 className="text-3xl font-bold mb-6">Checkout</h1>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
         <div className="mb-4">
-          <label className="block text-gray-700">Name</label>
-          <input
-            type="text"
-            name="customerName"
-            value={formData.customerName}
-            onChange={handleChange}
-            className="input"
-            required
-          />
+          <label htmlFor="customerName" className="block text-gray-700">Name</label>
+          <input id="customerName" name="customerName" type="text" className="input" value={formData.customerName} onChange={handleChange} required />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Email</label>
-          <input
-            type="email"
-            name="customerEmail"
-            value={formData.customerEmail}
-            onChange={handleChange}
-            className="input"
-            required
-          />
+          <label htmlFor="customerEmail" className="block text-gray-700">Email</label>
+          <input id="customerEmail" name="customerEmail" type="email" className="input" value={formData.customerEmail} onChange={handleChange} required />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Delivery Address</label>
-          <textarea
-            name="deliveryAddress"
-            value={formData.deliveryAddress}
-            onChange={handleChange}
-            className="input"
-            required
-          />
+          <label htmlFor="deliveryAddress" className="block text-gray-700">Delivery Address</label>
+          <textarea id="deliveryAddress" name="deliveryAddress" className="input" value={formData.deliveryAddress} onChange={handleChange} required />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Card Details</label>
-          <CardElement className="input" />
+          <label htmlFor="cardElement" className="block text-gray-700">Card Details</label>
+          <div id="cardElement" className="input"><CardElement /></div>
         </div>
         <div className="mb-4">
           <p className="text-2xl font-bold">Total: ${total.toFixed(2)}</p>

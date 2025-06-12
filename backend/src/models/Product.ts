@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema, Types } from 'mongoose';
 
-export interface IMenuItem extends Document {
+export interface IProduct extends Document {
   _id: Types.ObjectId;
   name: string;
   description: string;
@@ -11,7 +11,7 @@ export interface IMenuItem extends Document {
   updatedAt: Date;
 }
 
-const menuItemSchema = new Schema<IMenuItem>({
+const productSchema = new Schema<IProduct>({
   name: {
     type: String,
     required: true,
@@ -40,4 +40,4 @@ const menuItemSchema = new Schema<IMenuItem>({
   timestamps: true
 });
 
-export const MenuItem = mongoose.model<IMenuItem>('MenuItem', menuItemSchema); 
+export const Product = mongoose.model<IProduct>('Product', productSchema); 
